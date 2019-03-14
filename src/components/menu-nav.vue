@@ -5,23 +5,6 @@
                 <i class="icon iconfont icon-xiangmuguanli"></i>
                 <span slot="title" style="">供应商管理</span>
             </el-menu-item>
-            <el-menu-item index="/job" class="menu-index">
-                <i class="icon iconfont icon-xiangmuguanli"></i>
-                <span slot="title" style="">任务管理</span>
-            </el-menu-item>
-            <el-menu-item index="/apply" class="menu-index">
-                <i class="icon iconfont icon-renwu"></i>
-                <span slot="title" style="">报名管理</span>
-                <span class="num-badge1" v-if="waitInterviewTotal>0">{{waitInterviewTotal}}</span>
-            </el-menu-item>
-            <el-menu-item index="/commission" class="menu-index">
-                <i class="icon iconfont icon-qian-copy"></i>
-                <span slot="title" style="">发佣金</span>
-            </el-menu-item>
-            <el-menu-item index="/account" class="menu-index">
-                <i class="icon iconfont icon-zhanghuh"></i>
-                <span slot="title" style="">资金账户</span>
-            </el-menu-item>
         </el-menu>
     </aside>
 </template>
@@ -48,7 +31,7 @@ export default {
         // subLastestBadge () {
         //     this.$root.$on('on-badge-publish', this.getBadgeNumbers)
         // },
-        
+
         /**
          * 获取徽标数
          */

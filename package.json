@@ -6,7 +6,7 @@
     "scripts": {
         "icon": "node build/iconfont/iconfont-builder.js",
         "start": "cross-env MODE='development' DOMAIN='development'  webpack-dev-server --config build/webpack.dev.config.js",
-        "dev": "cross-env MODE='development' DOMAIN='development'  webpack --config build/webpack.prod.config.js",
+        "dev": "cross-env MODE='production' DOMAIN='development'  webpack --config build/webpack.prod.config.js",
         "test": "cross-env MODE='production' DOMAIN='test'  webpack --config build/webpack.prod.config.js --progress",
         "build": "cross-env MODE='production' DOMAIN='production'  webpack --config build/webpack.prod.config.js --progress"
     },

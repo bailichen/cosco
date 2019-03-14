@@ -2,9 +2,9 @@
     <section class="login">
         <section class="login-box">
             <section class="title_logo">
-                <img src="../../assets/images/login_logo.png" alt="">
+                <!--<img src="../../assets/images/login_logo.png" alt="">-->
             </section>
-            <section class="title_text">企业管理后台</section>
+            <section class="title_text">上海海运物业管理有限公司</section>
             <section class="acc-pass">
                 <section class="inp-box">
                     <section class="inpWrap">
@@ -18,7 +18,7 @@
                 <section class="inp-box">
                     <section class="inpWrap">
                         <i class="icon iconfont icon-mima"></i>
-                        <input type="password" v-model.trim="form.password" @focus="showHighLight2();" @blur="hideHighLight2();" @keyup.enter="goLogin" 
+                        <input type="password" v-model.trim="form.password" @focus="showHighLight2();" @blur="hideHighLight2();" @keyup.enter="goLogin"
                         class="inp" :class="classArr2"
                         placeholder="请输入密码" maxlength="16"/>
                     </section>
@@ -131,7 +131,7 @@ export default {
     background-position: center center;
 }
 .login .title_logo{
-    margin-top:111px;
+    margin-top:201px;
     text-align:center;
 }
 .login .title_logo img{
