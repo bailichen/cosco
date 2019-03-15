@@ -1,10 +1,11 @@
 import Login from '@/view/login/login.vue'
 import Main from '@/view/main.vue'
 
-// 首页
-import Index from '@/view/index/index.vue'
+// 供应商
+import gys from '@/view/gys/gys.vue'
 
-
+// 人员管理
+import personManagement from '@/view/person-management/person-management.vue'
 
 export default [
     {path: '/', redirect: '/login'}, //重定向
@@ -13,7 +14,8 @@ export default [
     {
         path: '/main', name: 'Main', component: Main,
         children: [
-           {path: '/index', name: 'index', component: Index, meta: {title: '首页'}},
+            {path: '/gys', name: 'gys', component: gys, meta: {title: '供应商管理'}},
+            {path: '/person-management', name: 'personManagement', component: personManagement, meta: {title: '人员管理'}},
             ]
     },
 

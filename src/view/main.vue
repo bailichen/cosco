@@ -56,9 +56,11 @@
     @import "~@/assets/css/theme.scss";
 
     .menu-nav .el-menu-item:hover, .menu-nav .el-menu-item:focus {
-        background-color: #FFEEEF !important;
+        background-color: #01479d !important;
     }
-
+    .menu-nav .el-menu-item.is-active{
+        background-color: #01479d !important;
+    }
     .menu-nav .main .main-cont.full_width {
         padding: 90px 20px 40px 20px;
     }
@@ -88,7 +90,7 @@
     }
 
     .menu-nav .is-opened .is-active {
-        background-color: #f00 !important;
+        background-color: $theme-main-color !important;
     }
 
     .menu-nav {
@@ -101,14 +103,15 @@
         position: fixed;
         top: 0;
         width: 100%;
-        height: 60px;
-        background-color: $theme-main-color ;
+        height: 90px;
+        background:url('../assets/images/login_bg.png') no-repeat;
+        background-size: cover;
     }
 
     .menu-nav .head-cont {
         display: flex;
         padding: 0 20px;
-        height: 60px;
+        height: 90px;
         line-height: 60px;
         color: #fff;
     }
@@ -116,20 +119,21 @@
     .menu-nav .head-cont .lef {
         flex: 1 1 auto;
         font-size: 36px;
-        font-family: STXinwei;
-    }
-
-    .menu-nav .head-cont .lef img {
-        float: left;
-        width: 146px;
-        height: 36px;
-        margin: 12px 0 12px 0;
+        margin-top: 5px;
+        img{
+            display: block;
+            width: auto;
+            height: 80px;
+        }
     }
 
     .menu-nav .head-cont .rig {
         flex: 1 1 auto;
         text-align: right;
         font-size: 14px;
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
     }
 
     .menu-nav .head-cont .tip1 {
@@ -151,11 +155,11 @@
     .menu-nav .main .lef-nav {
         z-index: 100;
         position: fixed;
-        top: 60px;
+        top: 90px;
         left: 0;
         width: 240px;
         height: 100%;
-        background-color: #fff;
+        background-color: $theme-main-color;
         -webkit-box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
         -moz-box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
         box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
@@ -181,6 +185,6 @@
 
     .menu-nav .main .main-cont {
         height: auto;
-        padding: 90px 20px 20px 260px;
+        padding: 90px 0 20px 240px;
     }
 </style>

@@ -43,7 +43,7 @@
 
 <script>
 import { loginSuccess } from '@/utily/login.js'
-// import { login, register, checkRegister, sendMsg } from '@/api/index.js'
+// import { login, register, checkRegister, sendMsg } from '@/api/gys.js'
 import XieYi from './xieyi'
 
 export default {

@@ -2,7 +2,7 @@
     <section class="login">
         <section class="login-box">
             <section class="title_logo">
-                <!--<img src="../../assets/images/login_logo.png" alt="">-->
+                <img src="../../assets/images/cosco-logo.png" alt=""/>
             </section>
             <section class="title_text">上海海运物业管理有限公司</section>
             <section class="acc-pass">
@@ -126,17 +126,17 @@ export default {
     width: 100%;
     min-width: 900px;
     height: 323px;
-    background: #fff url('../../assets/images/login_bg.png') no-repeat;
+    background:url('../../assets/images/login_bg.png') no-repeat;
     background-size: cover;
     background-position: center center;
 }
 .login .title_logo{
-    margin-top:201px;
+    margin-top:80px;
     text-align:center;
 }
 .login .title_logo img{
-    width: 100px;
-    height: 100px;
+    width: 230px;
+    height: 121px;
 }
 .login .title_text{
     margin-top:38px;

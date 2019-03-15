@@ -2,3 +2,12 @@
     text-align: right !important;
     margin-top: 10px;
 }
+.cosoco-nav {
+    .el-menu{
+        background: none !important;
+        border: 0!important;
+        .el-menu-item{
+            text-align: center!important;
+        }
+    }
+}
