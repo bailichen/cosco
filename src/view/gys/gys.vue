@@ -1,26 +1,9 @@
 <template>
     <section class="gys-list">
         <section class="index-top">
-            <el-tabs v-model="topActive"
-                     @tab-click="handleTopClick">
-                <el-tab-pane v-for="item in tabTop"
-                             :key="item.value"
-                             :label="item.lable"
-                             :name="item.value">
-
-                </el-tab-pane>
-            </el-tabs>
-            <el-tabs v-model="topChild"
-                     class="child-tabs"
-                     ref="childTabs"
-                     @tab-click="handleChildClick">
-                <el-tab-pane v-for="item in tabChild"
-                             :key="item.value"
-                             :label="item.lable"
-                             :name="item.value">
-
-                </el-tab-pane>
-            </el-tabs>
+            <cosco-tabs :tabTop="tabTop"
+                        @handleChooseParet="handleTopClick"
+                        @handleChooseChild="handleChildClick"></cosco-tabs>
         </section>
         <section class="index-center">
             <div class="index-center-left">
@@ -128,10 +111,13 @@
     </section>
 </template>
 <script>
+import CoscoTabs from '@/components/cosco-tabs.vue'
 export default {
+    components: {
+        CoscoTabs
+    },
     data() {
         return {
-            timer: null,
             currentPage: 0, // 当前页
             total: 4, // 总页数
             checkAll: false,
@@ -181,74 +167,276 @@ export default {
                 infoType: '', // 信息库类型
                 gysValue: '', // 供应商
             },
-            topActive: '0',
-            topChild: '0',
             tabTop: [
                 {
                     lable: '员工信息库',
-                    value: '0'
+                    value: '0',
+                    children: [
+                        {
+                            lable: '临时供应商1',
+                            value: '0'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '1'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '2'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '3'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '4'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '5'
+                        }
+                    ]
                 },
                 {
                     lable: '不动产信息库',
-                    value: '1'
+                    value: '1',
+                    children: [
+                        {
+                            lable: '临时供应商2',
+                            value: '0'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '1'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '2'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '3'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '4'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '5'
+                        }
+                    ]
                 },
                 {
                     lable: '员工信息库',
-                    value: '2'
+                    value: '2',
+                    children: [
+                        {
+                            lable: '临时供应商3',
+                            value: '0'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '1'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '2'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '3'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '4'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '5'
+                        }
+                    ],
                 },
                 {
                     lable: '不动产信息库',
-                    value: '3'
+                    value: '3',
+                    children: [
+                        {
+                            lable: '临时供应商4',
+                            value: '0'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '1'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '2'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '3'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '4'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '5'
+                        }
+                    ],
                 },
                 {
                     lable: '员工信息库',
-                    value: '4'
+                    value: '4',
+                    children: [
+                        {
+                            lable: '临时供应商5',
+                            value: '0'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '1'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '2'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '3'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '4'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '5'
+                        }
+                    ],
                 },
                 {
                     lable: '不动产信息库',
-                    value: '5'
+                    value: '5',
+                    children: [
+                        {
+                            lable: '临时供应商6',
+                            value: '0'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '1'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '2'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '3'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '4'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '5'
+                        }
+                    ],
                 },
                 {
                     lable: '员工信息库',
-                    value: '6'
+                    value: '6',
+                    children: [
+                        {
+                            lable: '临时供应商7',
+                            value: '0'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '1'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '2'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '3'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '4'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '5'
+                        }
+                    ],
                 },
                 {
                     lable: '不动产信息库',
-                    value: '7'
-                }
-            ],
-            tabChild: [
-                {
-                    lable: '临时供应商',
-                    value: '0'
+                    value: '7',
+                    children: [
+                        {
+                            lable: '临时供应商8',
+                            value: '0'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '1'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '2'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '3'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '4'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '5'
+                        }
+                    ],
                 },
                 {
-                    lable: '合格供应商',
-                    value: '1'
-                },
-                {
-                    lable: '临时供应商',
-                    value: '2'
-                },
-                {
-                    lable: '合格供应商',
-                    value: '3'
-                },
-                {
-                    lable: '临时供应商',
-                    value: '4'
-                },
-                {
-                    lable: '合格供应商',
-                    value: '5'
-                },
-                {
-                    lable: '临时供应商',
-                    value: '6'
-                },
-                {
-                    lable: '合格供应商',
-                    value: '7'
+                    lable: '不动产信息库',
+                    value: '8',
+                    children: [
+                        {
+                            lable: '临时供应商9',
+                            value: '0'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '1'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '2'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '3'
+                        },
+                        {
+                            lable: '临时供应商',
+                            value: '4'
+                        },
+                        {
+                            lable: '合格供应商',
+                            value: '5'
+                        }
+                    ],
                 }
             ]
         }
@@ -274,19 +462,12 @@ export default {
             let translatesValue = parseFloat(translates.substring(7).split(',')[4])
             return translatesValue
         },
-        handleTopClick(e) {
-            clearTimeout(this.timer)
-            this.timer = setTimeout(() => {
-                let tranValue = this.getTranslateValue();
-                console.log(tranValue);
-            }, 800)
-            console.log(this.$refs.childTabs);
-
-            console.log(this.topActive)
+        handleTopClick(item) {
+            console.log(item)
         },
-        handleChildClick() {
+        handleChildClick(item) {
 
-            console.log(this.topChild)
+            console.log(item)
         },
         handleCheckAllChange(val) { // 全选
             if (val) {
@@ -436,9 +617,6 @@ export default {
 .gys-list {
     .index-top {
         background: #fff;
-        margin-bottom: 10px;
-        height: 80px;
-        position: relative;
         .child-tabs {
             position: absolute;
             left: 50%;
