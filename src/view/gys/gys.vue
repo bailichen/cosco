@@ -1,14 +1,22 @@
 <template>
     <section class="gys-list">
         <section class="index-top">
-            <el-tabs v-model="topActive" @tab-click="handleTopClick">
-                <el-tab-pane v-for="item in tabTop" :key="item.value" :label="item.lable"
+            <el-tabs v-model="topActive"
+                     @tab-click="handleTopClick">
+                <el-tab-pane v-for="item in tabTop"
+                             :key="item.value"
+                             :label="item.lable"
                              :name="item.value">
 
                 </el-tab-pane>
             </el-tabs>
-            <el-tabs v-model="topChild" @tab-click="handleChildClick">
-                <el-tab-pane v-for="item in tabChild" :key="item.value" :label="item.lable"
+            <el-tabs v-model="topChild"
+                     class="child-tabs"
+                     ref="childTabs"
+                     @tab-click="handleChildClick">
+                <el-tab-pane v-for="item in tabChild"
+                             :key="item.value"
+                             :label="item.lable"
                              :name="item.value">
 
                 </el-tab-pane>
@@ -16,45 +24,65 @@
         </section>
         <section class="index-center">
             <div class="index-center-left">
+                <el-checkbox :indeterminate="isIndeterminate"
+                             v-model="checkAll"
+                             class="choose-all"
+                             @change="handleCheckAllChange">全选</el-checkbox>
                 共计<span>{{total}}</span>家供应商
             </div>
             <div class="index-center-right">
-                <el-input
-                    placeholder="请输入内容"
-                    class="index-center-right-input"
-                    v-model="filter.searchValue">
-                    <i slot="prefix" class="el-input__icon el-icon-search"></i>
+                <el-input placeholder="请输入内容"
+                          class="index-center-right-input"
+                          v-model="filter.searchValue">
+                    <i slot="prefix"
+                       class="el-input__icon el-icon-search"></i>
                 </el-input>
-                <img src="@/assets/images/add.png" class="btn-img"/>
-                <img src="@/assets/images/refresh.png" class="btn-img"/>
-                <img src="@/assets/images/printer.png" class="btn-img"/>
-                <img src="@/assets/images/save.png" class="btn-img"/>
-                <img src="@/assets/images/output.png" class="btn-img"/>
+                <img src="@/assets/images/add.png"
+                     class="btn-img" />
+                <img src="@/assets/images/refresh.png"
+                     class="btn-img" />
+                <img src="@/assets/images/printer.png"
+                     class="btn-img" />
+                <img src="@/assets/images/save.png"
+                     class="btn-img" />
+                <img src="@/assets/images/output.png"
+                     class="btn-img" />
             </div>
         </section>
         <section class="table-list">
             <el-table :data="tableData"
+                      ref="multipleTable"
                       @selection-change="handleSelectionChange"
                       style="width: 100%">
                 <el-table-column type="selection"
-                                 width="55">
+                                 width="34">
                 </el-table-column>
                 <el-table-column type="index"
                                  label="序号"
                                  width="50">
                 </el-table-column>
                 <el-table-column label="供应商ID"
-                                 prop="id"
-                                 width="120">
+                                 width="220">
+                    <div class="table-item"
+                         slot-scope="scope">
+                        <span>供应商ID</span>&emsp;<i>{{scope.row.id}}</i>
+                    </div>
                 </el-table-column>
                 <el-table-column label="供应商全称"
-                                 prop="name"
-                                 width="200">
+                                 width="250">
+                    <div class="table-item"
+                         slot-scope="scope">
+                        <span>供应商全称</span>&emsp;<i>{{scope.row.name}}</i>
+                    </div>
                 </el-table-column>
-                <el-table-column label="级别"
-                                 prop="desc">
+                <el-table-column label="级别">
+                    <div class="table-item"
+                         slot-scope="scope">
+                        <span>级别</span>&emsp;<i>{{scope.row.desc}}</i>
+                    </div>
                 </el-table-column>
-                <el-table-column type="expand">
+                <el-table-column type="expand"
+                                 width="220">
                     <template slot-scope="props">
                         <section class="table-expand clear">
                             <section>
@@ -80,8 +108,8 @@
                                 </p>
                             </section>
                             <section class="last-btn">
-                                <div class="edit">编辑</div>
-                                <div class="delete">删除</div>
+                                <div class="edit"><span>编辑</span></div>
+                                <div class="delete"><span>删除</span></div>
                             </section>
                         </section>
                     </template>
@@ -100,236 +128,381 @@
     </section>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                currentPage: 0, // 当前页
-                total: 4, // 总页数
-                tableData: [{
-                    id: '12987122',
-                    name: '好滋好味鸡蛋仔',
-                    category: '江浙小吃、小吃零食',
-                    desc: '荷兰优质淡奶，奶香浓而不腻',
-                    address: '上海市普陀区真北路',
-                    shop: '王小虎夫妻店',
-                    shopId: '10333'
-                }, {
-                    id: '12987123',
-                    name: '好滋好味鸡蛋仔',
-                    category: '江浙小吃、小吃零食',
-                    desc: '荷兰优质淡奶，奶香浓而不腻',
-                    address: '上海市普陀区真北路',
-                    shop: '王小虎夫妻店',
-                    shopId: '10333'
-                }, {
-                    id: '12987125',
-                    name: '好滋好味鸡蛋仔',
-                    category: '江浙小吃、小吃零食',
-                    desc: '荷兰优质淡奶，奶香浓而不腻',
-                    address: '上海市普陀区真北路',
-                    shop: '王小虎夫妻店',
-                    shopId: '10333'
-                }, {
-                    id: '12987126',
-                    name: '好滋好味鸡蛋仔',
-                    category: '江浙小吃、小吃零食',
-                    desc: '荷兰优质淡奶，奶香浓而不腻',
-                    address: '上海市普陀区真北路',
-                    shop: '王小虎夫妻店',
-                    shopId: '10333'
-                }],
-                multipleSelection: [], // 选择数组
-                typeList: [
-                    {
-                        label: '哈哈哈',
-                        value: '1'
-                    }
-                ],
-                filter: {
-                    searchValue: '', //搜索内容
-                    infoType: '', // 信息库类型
-                    gysValue: '', // 供应商
+export default {
+    data() {
+        return {
+            timer: null,
+            currentPage: 0, // 当前页
+            total: 4, // 总页数
+            checkAll: false,
+            isIndeterminate: false,
+            tableData: [{
+                id: '12987122',
+                name: '好滋好味鸡蛋仔',
+                category: '江浙小吃、小吃零食',
+                desc: '荷兰优质淡奶，奶香浓而不腻',
+                address: '上海市普陀区真北路',
+                shop: '王小虎夫妻店',
+                shopId: '10333'
+            }, {
+                id: '12987123',
+                name: '好滋好味鸡蛋仔',
+                category: '江浙小吃、小吃零食',
+                desc: '荷兰优质淡奶，奶香浓而不腻',
+                address: '上海市普陀区真北路',
+                shop: '王小虎夫妻店',
+                shopId: '10333'
+            }, {
+                id: '12987125',
+                name: '好滋好味鸡蛋仔',
+                category: '江浙小吃、小吃零食',
+                desc: '荷兰优质淡奶，奶香浓而不腻',
+                address: '上海市普陀区真北路',
+                shop: '王小虎夫妻店',
+                shopId: '10333'
+            }, {
+                id: '12987126',
+                name: '好滋好味鸡蛋仔',
+                category: '江浙小吃、小吃零食',
+                desc: '荷兰优质淡奶，奶香浓而不腻',
+                address: '上海市普陀区真北路',
+                shop: '王小虎夫妻店',
+                shopId: '10333'
+            }],
+            multipleSelection: [], // 选择数组
+            typeList: [
+                {
+                    label: '哈哈哈',
+                    value: '1'
+                }
+            ],
+            filter: {
+                searchValue: '', //搜索内容
+                infoType: '', // 信息库类型
+                gysValue: '', // 供应商
+            },
+            topActive: '0',
+            topChild: '0',
+            tabTop: [
+                {
+                    lable: '员工信息库',
+                    value: '0'
                 },
-                topActive: '0',
-                topChild:'0',
-                tabTop: [
-                    {
-                        lable: '员工信息库',
-                        value: '0'
-                    },
-                    {
-                        lable: '不动产信息库',
-                        value: '1'
-                    }
-                ],
-                tabChild:[
-                    {
-                        lable: '临时供应商',
-                        value: '0'
-                    },
-                    {
-                        lable: '合格供应商',
-                        value: '1'
-                    }
-                ]
-            }
+                {
+                    lable: '不动产信息库',
+                    value: '1'
+                },
+                {
+                    lable: '员工信息库',
+                    value: '2'
+                },
+                {
+                    lable: '不动产信息库',
+                    value: '3'
+                },
+                {
+                    lable: '员工信息库',
+                    value: '4'
+                },
+                {
+                    lable: '不动产信息库',
+                    value: '5'
+                },
+                {
+                    lable: '员工信息库',
+                    value: '6'
+                },
+                {
+                    lable: '不动产信息库',
+                    value: '7'
+                }
+            ],
+            tabChild: [
+                {
+                    lable: '临时供应商',
+                    value: '0'
+                },
+                {
+                    lable: '合格供应商',
+                    value: '1'
+                },
+                {
+                    lable: '临时供应商',
+                    value: '2'
+                },
+                {
+                    lable: '合格供应商',
+                    value: '3'
+                },
+                {
+                    lable: '临时供应商',
+                    value: '4'
+                },
+                {
+                    lable: '合格供应商',
+                    value: '5'
+                },
+                {
+                    lable: '临时供应商',
+                    value: '6'
+                },
+                {
+                    lable: '合格供应商',
+                    value: '7'
+                }
+            ]
+        }
+    },
+    methods: {
+        handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
         },
-        methods: {
-            handleSizeChange(val) {
-                console.log(`每页 ${val} 条`);
-            },
-            handleCurrentChange(val) {
-                console.log(`当前页: ${val}`);
-            },
-            handleSelectionChange(val) {
-                this.multipleSelection = val;
-                console.log(val);
-            },
-            getDataList(val) {
-                // 接口数据获取
-            },
-            handleTopClick() {
-                console.log(this.topActive)
-            },
-            handleChildClick(){
-                console.log(this.topChild)
-            }
+        handleCurrentChange(val) {
+            console.log(`当前页: ${val}`);
         },
-        mounted() {
+        handleSelectionChange(val) {
+            this.multipleSelection = val;
+            let checkedCount = val.length;
+            this.checkAll = checkedCount === this.tableData.length;
+            this.isIndeterminate = checkedCount > 0 && checkedCount < this.tableData.length;
+        },
+        getDataList(val) {
+            // 接口数据获取
+        },
+        getTranslateValue() { // 获取点击一级菜单的位置
+            var translates = document.defaultView.getComputedStyle(document.getElementsByClassName('el-tabs__active-bar')[0], null).transform;
+            let translatesValue = parseFloat(translates.substring(7).split(',')[4])
+            return translatesValue
+        },
+        handleTopClick(e) {
+            clearTimeout(this.timer)
+            this.timer = setTimeout(() => {
+                let tranValue = this.getTranslateValue();
+                console.log(tranValue);
+            }, 800)
+            console.log(this.$refs.childTabs);
 
+            console.log(this.topActive)
         },
-    }
+        handleChildClick() {
+
+            console.log(this.topChild)
+        },
+        handleCheckAllChange(val) { // 全选
+            if (val) {
+                this.tableData.forEach(row => {
+                    this.$refs.multipleTable.toggleRowSelection(row);
+                })
+            } else {
+                this.$refs.multipleTable.clearSelection();
+            }
+            this.isIndeterminate = false;
+        },
+    },
+    mounted() {
+
+    },
+}
 </script>
 <style lang="scss" scoped>
-
-
-    .table-expand {
-        section {
-            float: left;
-            box-sizing: border-box;
-            width: 25%;
-            padding-left: 66px;
-            p {
+.table-expand {
+    min-height: 100px;
+    section {
+        float: left;
+        box-sizing: border-box;
+        width: 25%;
+        padding-left: 42px;
+        p {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            span {
                 display: block;
-                width: 100%;
-                margin-bottom: 10px;
-                span {
-                    display: block;
-                    font-weight: 700;
-                    color: #000;
-                    float: left;
-                    width: 40%;
-                }
-                i {
-                    width: 60%;
-                    float: left;
-                    display: block;
-                    font-style: normal;
-                }
+                font-weight: 700;
+                color: #000;
+                float: left;
+                width: 40%;
+            }
+            i {
+                width: 60%;
+                float: left;
+                font-size: 12px;
+                display: block;
+                font-style: normal;
             }
         }
-        .last-btn{
-            div{
+    }
+    .last-btn {
+        position: absolute;
+        right: 40px;
+        height: 100px;
+        div {
+            width: 100%;
+            text-align: right;
+            span {
+                display: inline-block;
                 width: 130px;
                 height: 45px;
                 line-height: 45px;
                 text-align: center;
                 color: #fff;
                 cursor: pointer;
-
-            }
-            .edit{
-                background: #1f7ed0;
-                margin-bottom: 10px;
-            }
-            .delete{
-                background: #f39800;
             }
         }
-    }
-    .index-center{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0px 40px 10px;
-        .index-center-left{
-            span{
-                color: #f39800;
-            }
-        }
-    }
-    .table-list{
-        padding-right: 20px;
-    }
-</style>
-
-<style lang="scss">
-    .table-list .el-table td, .el-table th.is-leaf{
-        border-bottom: 8px solid #dcdcdc !important;
-    }
-    .table-list .el-table::before{
-        height: 0;
-    }
-    .table-list .el-icon-arrow-right:before{
-        content: "\e603";
-    }
-    .table-list .el-table__expand-icon--expanded{
-        transform: rotate(180deg);
-        .el-icon{
-            margin-left: -8px;
-        }
-    }
-    .gys-list {
-        .index-top {
-            background: #fff;
+        .edit {
             margin-bottom: 10px;
-            .el-tabs__header {
-                margin: 0 !important;
+            span {
+                background: #1f7ed0;
             }
-            .el-tabs__nav-wrap {
-                padding-left: 40px;
+            span:hover {
+                background: #3a8ee6;
             }
-            .el-tabs__item.is-active{
-                color: #303133;
+            span:active {
+                background: #1f7ed0;
             }
-            .el-tabs__item:hover{
-                color: #f39800;
-            }
-            .el-tabs__active-bar{
+        }
+        .delete {
+            span {
                 background: #f39800;
+            }
+            span:hover {
+                background: #f39800;
+            }
+            span:active {
+                background: #f39800ba;
             }
         }
     }
-    .demo-table-expand {
-        font-size: 0;
+}
+.index-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px 10px 14px;
+    .index-center-left {
+        span {
+            color: #f39800;
+        }
     }
+    .choose-all {
+        margin-right: 10px;
+    }
+}
+.table-list {
+    padding-right: 20px;
 
-    .demo-table-expand label {
-        width: 90px;
-        color: #99a9bf;
-    }
-
-    .demo-table-expand .el-form-item {
-        margin-right: 0;
-        margin-bottom: 0;
-        width: 50%;
-    }
-    .index-center .index-center-right{
+    .table-item {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        .btn-img{
+        span {
             display: block;
-            height: 20px;
-            width: auto;
-            margin-left: 10px;
+            color: #000;
+            font-weight: 700;
         }
-        .index-center-right-input{
-            .el-input__inner{
-                background: #eee;
-                border: 0;
-            }
-
+        i {
+            display: block;
+            font-style: normal;
+            font-size: 12px;
         }
     }
+}
+</style>
+
+<style lang="scss">
+.table-list .el-table td,
+.el-table th.is-leaf {
+    border-bottom: 8px solid #dcdcdc !important;
+}
+.table-list .el-table::before {
+    height: 0;
+}
+.table-list .el-icon-arrow-right:before {
+    content: "\e603";
+}
+.table-list .el-table__expand-icon--expanded {
+    transform: rotate(180deg);
+    .el-icon {
+        margin-left: -8px;
+    }
+}
+.table-list thead {
+    display: none !important;
+}
+.table-list .el-table th,
+.table-list .el-table tr {
+    position: relative;
+}
+.gys-list {
+    .index-top {
+        background: #fff;
+        margin-bottom: 10px;
+        height: 80px;
+        position: relative;
+        .child-tabs {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            .el-tabs__nav-wrap {
+                margin-bottom: 0 !important;
+            }
+            .el-tabs__nav-wrap::after {
+                background-color: #fff;
+            }
+            .el-tabs__item {
+                font-size: 12px !important;
+            }
+        }
+        .el-tabs__header {
+            margin: 0 !important;
+        }
+        .el-tabs__nav-wrap {
+            padding-left: 40px;
+        }
+        .el-tabs__item.is-active {
+            color: #303133;
+        }
+        .el-tabs__item:hover {
+            color: #f39800;
+        }
+        .el-tabs__active-bar {
+            background: #f39800;
+        }
+    }
+}
+.demo-table-expand {
+    font-size: 0;
+}
+
+.demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+}
+
+.demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
+}
+.index-center .index-center-right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .btn-img {
+        display: block;
+        height: 20px;
+        width: auto;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    .btn-img:active {
+        box-shadow: 0px 0px 5px grey;
+    }
+    .index-center-right-input {
+        .el-input__inner {
+            background: #eee;
+            border: 0;
+        }
+    }
+}
 </style>
