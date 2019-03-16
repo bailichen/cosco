@@ -19,7 +19,7 @@ const {
 
 module.exports = {
     entry: {
-        index: [path.resolve("src/gys.js")]
+        index: [path.resolve("src/index.js")]
     },
     output: {
         publicPath: "/",
@@ -183,10 +183,10 @@ module.exports = {
         new VueLoaderPlugin(),
         new HtmlPlugin({
             filename: "index.html",
-            template: path.resolve("src/gys.html"),
+            template: path.resolve("src/index.html"),
             showErrors: true,
-            excludeChunks: ['download/gys'],
-            title: 'USER-H5'
+            // excludeChunks: ['download/index'],
+            // title: 'USER-H5'
         }),
         new webpack.DefinePlugin({
             'process.env': {
