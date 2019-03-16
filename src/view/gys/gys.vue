@@ -1,16 +1,17 @@
 <template>
     <section class="gys-list">
         <section class="index-top">
+            <!--tab菜单组件-->
             <cosco-tabs :tabTop="tabTop"
                         @handleChooseParet="handleTopClick"
                         @handleChooseChild="handleChildClick"></cosco-tabs>
         </section>
         <section class="index-center">
             <div class="index-center-left">
-                <el-checkbox :indeterminate="isIndeterminate"
-                             v-model="checkAll"
-                             class="choose-all"
-                             @change="handleCheckAllChange">全选</el-checkbox>
+                <!--<el-checkbox :indeterminate="isIndeterminate"-->
+                             <!--v-model="checkAll"-->
+                             <!--class="choose-all"-->
+                             <!--@change="handleCheckAllChange">全选</el-checkbox>-->
                 共计<span>{{total}}</span>家供应商
             </div>
             <div class="index-center-right">
@@ -45,24 +46,18 @@
                                  width="50">
                 </el-table-column>
                 <el-table-column label="供应商ID"
+                                 prop="id"
                                  width="220">
-                    <div class="table-item"
-                         slot-scope="scope">
-                        <span>供应商ID</span>&emsp;<i>{{scope.row.id}}</i>
-                    </div>
+                    <!--<div class="table-item"-->
+                         <!--slot-scope="scope">-->
+                        <!--<span>供应商ID</span>&emsp;<i>{{scope.row.id}}</i>-->
+                    <!--</div>-->
                 </el-table-column>
                 <el-table-column label="供应商全称"
+                                 prop="name"
                                  width="250">
-                    <div class="table-item"
-                         slot-scope="scope">
-                        <span>供应商全称</span>&emsp;<i>{{scope.row.name}}</i>
-                    </div>
                 </el-table-column>
-                <el-table-column label="级别">
-                    <div class="table-item"
-                         slot-scope="scope">
-                        <span>级别</span>&emsp;<i>{{scope.row.desc}}</i>
-                    </div>
+                <el-table-column label="级别" prop="desc">
                 </el-table-column>
                 <el-table-column type="expand"
                                  width="220">
@@ -173,28 +168,12 @@ export default {
                     value: '0',
                     children: [
                         {
-                            lable: '临时供应商1',
+                            lable: '正式员工',
                             value: '0'
                         },
                         {
-                            lable: '合格供应商',
+                            lable: '外聘员工',
                             value: '1'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '2'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '3'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '4'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '5'
                         }
                     ]
                 },
@@ -202,240 +181,35 @@ export default {
                     lable: '不动产信息库',
                     value: '1',
                     children: [
-                        {
-                            lable: '临时供应商2',
-                            value: '0'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '1'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '2'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '3'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '4'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '5'
-                        }
+
                     ]
                 },
                 {
-                    lable: '员工信息库',
+                    lable: '客户信息库',
                     value: '2',
                     children: [
-                        {
-                            lable: '临时供应商3',
-                            value: '0'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '1'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '2'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '3'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '4'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '5'
-                        }
+
                     ],
                 },
                 {
-                    lable: '不动产信息库',
+                    lable: '资产信息库',
                     value: '3',
                     children: [
                         {
-                            lable: '临时供应商4',
+                            lable: '固定资产',
                             value: '0'
                         },
                         {
-                            lable: '合格供应商',
+                            lable: '非固定资产',
                             value: '1'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '2'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '3'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '4'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '5'
                         }
                     ],
                 },
                 {
-                    lable: '员工信息库',
+                    lable: '企业证书信息库',
                     value: '4',
                     children: [
-                        {
-                            lable: '临时供应商5',
-                            value: '0'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '1'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '2'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '3'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '4'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '5'
-                        }
-                    ],
-                },
-                {
-                    lable: '不动产信息库',
-                    value: '5',
-                    children: [
-                        {
-                            lable: '临时供应商6',
-                            value: '0'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '1'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '2'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '3'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '4'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '5'
-                        }
-                    ],
-                },
-                {
-                    lable: '员工信息库',
-                    value: '6',
-                    children: [
-                        {
-                            lable: '临时供应商7',
-                            value: '0'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '1'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '2'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '3'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '4'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '5'
-                        }
-                    ],
-                },
-                {
-                    lable: '不动产信息库',
-                    value: '7',
-                    children: [
-                        {
-                            lable: '临时供应商8',
-                            value: '0'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '1'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '2'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '3'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '4'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '5'
-                        }
-                    ],
-                },
-                {
-                    lable: '不动产信息库',
-                    value: '8',
-                    children: [
-                        {
-                            lable: '临时供应商9',
-                            value: '0'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '1'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '2'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '3'
-                        },
-                        {
-                            lable: '临时供应商',
-                            value: '4'
-                        },
-                        {
-                            lable: '合格供应商',
-                            value: '5'
-                        }
+
                     ],
                 }
             ]
@@ -456,11 +230,6 @@ export default {
         },
         getDataList(val) {
             // 接口数据获取
-        },
-        getTranslateValue() { // 获取点击一级菜单的位置
-            var translates = document.defaultView.getComputedStyle(document.getElementsByClassName('el-tabs__active-bar')[0], null).transform;
-            let translatesValue = parseFloat(translates.substring(7).split(',')[4])
-            return translatesValue
         },
         handleTopClick(item) {
             console.log(item)
@@ -607,9 +376,9 @@ export default {
         margin-left: -8px;
     }
 }
-.table-list thead {
-    display: none !important;
-}
+/*.table-list thead {*/
+    /*display: none !important;*/
+/*}*/
 .table-list .el-table th,
 .table-list .el-table tr {
     position: relative;
