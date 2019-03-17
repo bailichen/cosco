@@ -6,10 +6,10 @@
         center>
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
             <el-form-item label="供应商全称" prop="name">
-                <el-input v-model="ruleForm.name"></el-input>
+                <el-input size="small" v-model="ruleForm.name"></el-input>
             </el-form-item>
             <el-form-item label="描述" prop="desc">
-                <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+                <el-input size="small" type="textarea" v-model="ruleForm.desc"></el-input>
             </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
