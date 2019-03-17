@@ -22,7 +22,7 @@
                        class="el-input__icon el-icon-search"></i>
                 </el-input>
                 <img src="@/assets/images/add.png"
-                     class="btn-img" />
+                     class="btn-img" @click="handleEditor('add')"/>
                 <img src="@/assets/images/refresh.png"
                      class="btn-img" />
                 <img src="@/assets/images/printer.png"
@@ -46,18 +46,13 @@
                                  width="50">
                 </el-table-column>
                 <el-table-column label="供应商ID"
-                                 prop="id"
-                                 width="220">
-                    <!--<div class="table-item"-->
-                         <!--slot-scope="scope">-->
-                        <!--<span>供应商ID</span>&emsp;<i>{{scope.row.id}}</i>-->
-                    <!--</div>-->
+                                 prop="id">
                 </el-table-column>
                 <el-table-column label="供应商全称"
                                  prop="name"
-                                 width="250">
+                                 show-overflow-tooltip>
                 </el-table-column>
-                <el-table-column label="级别" prop="desc">
+                <el-table-column label="级别" prop="desc" show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column type="expand"
                                  width="220">
@@ -86,7 +81,7 @@
                                 </p>
                             </section>
                             <section class="last-btn">
-                                <div class="edit"><span>编辑</span></div>
+                                <div class="edit"><span @click="handleEditor(props.row)">编辑</span></div>
                                 <div class="delete"><span>删除</span></div>
                             </section>
                         </section>
@@ -102,17 +97,20 @@
                            :total="total">
             </el-pagination>
         </section>
-
+    <editor-dialog v-model="isEdit"></editor-dialog>
     </section>
 </template>
 <script>
 import CoscoTabs from '@/components/cosco-tabs.vue'
+import EditorDialog from './editor-dialog.vue'
 export default {
     components: {
-        CoscoTabs
+        CoscoTabs,
+        EditorDialog
     },
     data() {
         return {
+            isEdit:false,
             currentPage: 0, // 当前页
             total: 4, // 总页数
             checkAll: false,
@@ -238,16 +236,9 @@ export default {
 
             console.log(item)
         },
-        handleCheckAllChange(val) { // 全选
-            if (val) {
-                this.tableData.forEach(row => {
-                    this.$refs.multipleTable.toggleRowSelection(row);
-                })
-            } else {
-                this.$refs.multipleTable.clearSelection();
-            }
-            this.isIndeterminate = false;
-        },
+        handleEditor(val){
+            this.isEdit = true;
+        }
     },
     mounted() {
 
