@@ -3,7 +3,7 @@ import apiUrl from './config';
 import Vue from 'vue';
 
 Vue.prototype.$api = {
-    // login: () => params => axios.get(`${apiUrl}/admin/login`, params)
+    // login: params => axios.get(`${apiUrl}/admin/login`, params)
 }
 
 
@@ -12,5 +12,9 @@ Vue.prototype.$api = {
  *
  *  调用方式
  *  params 为object
- *  this.$api.get('login',params)
+ *  this.$api.login(params).then(res =>{
+ *      console.log(res)
+ *  })
+ *
+ *
  **/

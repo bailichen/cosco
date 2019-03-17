@@ -1,25 +1,18 @@
 // 获取ip
-const domain = process.env.domain || 'local';
-const host = process.env.host || 'default';
-
-const apiDevHosterName = host === 'default' ? 'ci' : host;
-const apiTestHosterName = host === 'default' ? 'st1' : host;
+const domain = process.env.domain || 'production';
 
 const config = {
     local: {
-        API_URL: `http://ck-api.${apiDevHosterName}.dev.lanxinka.com`,
+        API_URL: `http://ck-api.dev.lanxinka.com`, // 本地接口域名
     },
     development: {
-        API_URL: `http://ck-api.${apiDevHosterName}.dev.lanxinka.com`,
+        API_URL: `http://ck-api.dev.lanxinka.com`, // 开发环境接口域名
     },
-    test: {
-        API_URL: `http://ck-api.${apiTestHosterName}.test.lanxinka.com`,
+    test: {// 开发环境接口
+        API_URL: `http://ck-api.test.lanxinka.com`, // 测试环境接口域名
     },
     production: {
-        API_URL: `http://ck-api.koubeigongzuo.com`,
-    },
-    demo: {
-        API_URL: `http://demo-ck-api.koubeigongzuo.com`,
+        API_URL: `http://ck-api.koubeigongzuo.com`, // 生产环境接口域名
     }
 }[domain]
 

@@ -1,0 +1,144 @@
+.table-list .el-table td,
+.el-table th.is-leaf {
+    border-bottom: 8px solid #dcdcdc !important;
+}
+.table-list .el-table::before {
+    height: 0;
+}
+.table-list .el-icon-arrow-right:before {
+    content: "\e603";
+}
+.table-list .el-table__expand-icon--expanded {
+    transform: rotate(180deg);
+    .el-icon {
+        margin-left: -8px;
+    }
+}
+.table-list .el-table th,
+.table-list .el-table tr {
+    position: relative;
+}
+.index-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px 10px 14px;
+    .index-center-left {
+        span {
+            color: #f39800;
+        }
+    }
+    .choose-all {
+        margin-right: 10px;
+    }
+}
+.table-list {
+    padding-right: 20px;
+    .el-table th>.cell{
+        color: #000;
+    }
+}
+.demo-table-expand {
+    font-size: 0;
+}
+
+.demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+}
+
+.demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
+}
+.index-center .index-center-right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .btn-img {
+        display: block;
+        height: 20px;
+        width: auto;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    .btn-img:active {
+        box-shadow: 0px 0px 5px grey;
+    }
+    .index-center-right-input {
+        .el-input__inner {
+            background: #eee;
+            border: 0;
+        }
+    }
+}
+.table-expand {
+    min-height: 100px;
+    section {
+        float: left;
+        box-sizing: border-box;
+        width: 25%;
+        padding-left: 42px;
+        p {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            span {
+                display: block;
+                font-weight: 700;
+                color: #000;
+                float: left;
+                width: 40%;
+            }
+            i {
+                width: 60%;
+                float: left;
+                font-size: 12px;
+                display: block;
+                font-style: normal;
+            }
+        }
+    }
+    .last-btn {
+        position: absolute;
+        right: 40px;
+        height: 100px;
+        div {
+            width: 100%;
+            text-align: right;
+            span {
+                display: inline-block;
+                width: 130px;
+                height: 45px;
+                line-height: 45px;
+                text-align: center;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+        .edit {
+            margin-bottom: 10px;
+            span {
+                background: #1f7ed0;
+            }
+            span:hover {
+                background: #3a8ee6;
+            }
+            span:active {
+                background: #1f7ed0;
+            }
+        }
+        .delete {
+            span {
+                background: #f39800;
+            }
+            span:hover {
+                background: #f39800;
+            }
+            span:active {
+                background: #f39800ba;
+            }
+        }
+    }
+}
