@@ -105,7 +105,7 @@ export default {
                 return false
             }
             // 登录接口
-            this.$router.push({name:'gys'})
+            this.$router.push({name:'baseM'})
         },
         handleRegister() {
             this.$router.push({

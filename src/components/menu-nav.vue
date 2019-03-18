@@ -7,6 +7,9 @@
             <el-menu-item index="/supplier-management" class="menu-index">
                 <span slot="title">供应商</span>
             </el-menu-item>
+            <el-menu-item index="/gys" class="menu-index">
+                <span slot="title">demo</span>
+            </el-menu-item>
         </el-menu>
 
     </aside>

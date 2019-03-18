@@ -1,24 +1,91 @@
 <template>
     <el-dialog :title="editorText"
                :visible.sync="currentValue"
-               width="30%"
+               width="80%"
                center>
         <el-form :model="ruleForm"
                  :rules="rules"
                  ref="ruleForm"
                  label-width="100px"
                  class="demo-ruleForm">
-            <el-form-item label="供应商全称"
-                          prop="name">
-                <el-input size="small"
-                          v-model="ruleForm.name"></el-input>
-            </el-form-item>
-            <el-form-item label="描述"
-                          prop="desc">
-                <el-input size="small"
-                          type="textarea"
-                          v-model="ruleForm.desc"></el-input>
-            </el-form-item>
+
+            <!-- 布局：
+            两列
+            <el-row type="flex"
+                    class="row-bg"
+                    justify="center">
+                <el-col :span="12"></el-col>
+                <el-col :span="12"></el-col>
+            </el-row>
+            三列
+            <el-row type="flex"
+                    class="row-bg"
+                    justify="center">
+                <el-col :span="6"></el-col>
+                <el-col :span="6"></el-col>
+                <el-col :span="6"></el-col>
+            </el-row> -->
+
+            <el-row type="flex"
+                    class="row-bg"
+                    justify="center">
+                <el-col :span="8">
+                    <el-form-item label="供应商全称"
+                                  prop="name">
+                        <el-input size="small"
+                                  v-model="ruleForm.name"></el-input>
+                    </el-form-item>
+                    <el-form-item label="描述"
+                                  prop="desc">
+                        <el-input size="small"
+                                  type="textarea"
+                                  v-model="ruleForm.desc"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                    <el-form-item label="活动区域"
+                                  prop="region">
+                        <el-select v-model="ruleForm.region"
+                                   placeholder="请选择活动区域">
+                            <el-option label="区域一"
+                                       value="shanghai"></el-option>
+                            <el-option label="区域二"
+                                       value="beijing"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="日期"
+                                  prop="date2">
+                        <el-date-picker v-model="ruleForm.date2"
+                                        type="date"
+                                        value-format="yyyy-MM-dd"
+                                        placeholder="选择日期">
+                        </el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="时间"
+                                  prop="date1">
+                        <el-date-picker v-model="ruleForm.date1"
+                                        type="datetime"
+                                        value-format="yyyy-MM-dd HH:mm:ss"
+                                        placeholder="选择时间">
+                        </el-date-picker>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                    <el-form-item label="特殊资源"
+                                  prop="resource">
+                        <el-radio-group v-model="ruleForm.resource">
+                            <el-radio label="线上品牌商赞助"></el-radio>
+                            <el-radio label="线下场地免费"></el-radio>
+                        </el-radio-group>
+                    </el-form-item>
+                    <el-form-item label="描述"
+                                  prop="desc">
+                        <el-input size="small"
+                                  type="textarea"
+                                  v-model="ruleForm.desc"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-row>
         </el-form>
         <span slot="footer"
               class="dialog-footer">
@@ -35,21 +102,25 @@ import TwoWay from '@/mixins/two-way/two-way'
 export default {
     mixins: [TwoWay],
     // props: ['editorStatus', 'editorData'],
-    props:{
-        editorStatus:{
-            type:String,
-            default:''
+    props: {
+        editorStatus: {
+            type: String,
+            default: ''
         },
-        editorData:{
-            type:Object,
-            default:()=>{}
+        editorData: {
+            type: Object,
+            default: () => { }
         }
     },
     data() {
         return {
             ruleForm: {
                 name: '',
-                desc: ''
+                desc: '',
+                region: '',
+                resource: '',
+                date2: '',
+                date1: '',
             },
             rules: {
                 name: [
@@ -58,7 +129,19 @@ export default {
                 ],
                 desc: [
                     { required: true, message: '请填写活动形式', trigger: 'blur' }
-                ]
+                ],
+                region: [
+                    { required: true, message: '请选择活动区域', trigger: 'change' }
+                ],
+                resource: [
+                    { required: true, message: '请选择活动资源', trigger: 'change' }
+                ],
+                date2: [
+                    { required: true, message: '请选择时间', trigger: 'change' }
+                ],
+                date1: [
+                    { required: true, message: '请选择日期', trigger: 'change' }
+                ],
             }
         }
     },

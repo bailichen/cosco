@@ -7,6 +7,9 @@ import baseM from '@/view/base-management/baseM.vue'
 // 供应商管理
 import supplierM from '@/view/supplier-management/supplierM.vue'
 
+// demo
+import gys from '@/view/gys/gys.vue'
+
 export default [
     {path: '/', redirect: '/login'}, //重定向
     {path: '/login', name: 'Login', component: Login, meta: {title: '登录'}},
@@ -16,6 +19,7 @@ export default [
         children: [
             {path: '/base-management', name: 'baseM', component: baseM, meta: {title: '基础信息库'}},
             {path: '/supplier-management', name: 'supplierM', component: supplierM, meta: {title: '供应商管理'}},
+            {path: '/gys', name: 'gys', component: gys, meta: {title: 'demo'}},
             ]
     },
 
