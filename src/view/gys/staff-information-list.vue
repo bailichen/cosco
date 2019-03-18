@@ -102,7 +102,7 @@
 import EditorDialog from './editor-dialog.vue'
 import DeleteDialog from './delete-dialog.vue'
 export default {
-    name: "ygx-list",
+    name: "staff-information-list",
     components: {
         EditorDialog,
         DeleteDialog,
@@ -112,7 +112,7 @@ export default {
             isEdit: false,
             isDetele: false,
             editorStatus: null, // 编辑or新增传值
-            editorData: "",
+            editorData: {},
             currentPage: 0, // 当前页
             total: 4, // 总页数
             tableData: [{
@@ -172,7 +172,7 @@ export default {
             val == "add" ? this.editorStatus = "add" : this.editorStatus = "editor"
             if (this.editorStatus == 'editor') {
                 // 若是编辑，传id（信息）给子组件
-                this.editorData = val.id
+                this.editorData = val
             }
         }
     },

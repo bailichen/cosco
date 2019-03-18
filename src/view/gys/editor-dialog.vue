@@ -34,7 +34,17 @@ import TwoWay from '@/mixins/two-way/two-way'
 
 export default {
     mixins: [TwoWay],
-    props: ['editorStatus', 'editorData'],
+    // props: ['editorStatus', 'editorData'],
+    props:{
+        editorStatus:{
+            type:String,
+            default:''
+        },
+        editorData:{
+            type:Object,
+            default:()=>{}
+        }
+    },
     data() {
         return {
             ruleForm: {
