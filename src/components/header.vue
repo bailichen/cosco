@@ -1,7 +1,7 @@
 <template>
     <header class="head">
         <section class="head-cont">
-             <section class="lef" @click="$router.push('/gys')">
+             <section class="lef" @click="$router.push('/base-management')">
                  <img src="../assets/images/cosco-logo.png" alt=""/>
              </section>
             <section class="rig">Welcome {{name}}！
