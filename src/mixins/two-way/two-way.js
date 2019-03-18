@@ -1,14 +1,17 @@
 export default {
-    props:['value'],
-    computed:{
-        currentValue:{
-            get(){
-                return this.value
+    model: {
+        prop: 'bindValue',
+        event: 'valueChanged'
+    },
+    props: ['bindValue'],
+    computed: {
+        currentValue: {
+            get() {
+                return this.bindValue;
             },
-            set(newValue){
-                this.value = newValue
+            set(value) {
+                this.$emit('valueChanged', value);
             }
         }
     }
-
 }
