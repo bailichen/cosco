@@ -1,11 +1,11 @@
 import Login from '@/view/login/login.vue'
 import Main from '@/view/main.vue'
 
-// 供应商
-import gys from '@/view/gys/gys.vue'
+// 基础信息库
+import baseM from '@/view/base-management/baseM.vue'
 
-// 人员管理
-import personManagement from '@/view/person-management/person-management.vue'
+// 供应商
+import supplierP from '@/view/supplier-management/supplierP.vue'
 
 export default [
     {path: '/', redirect: '/login'}, //重定向
@@ -14,8 +14,9 @@ export default [
     {
         path: '/main', name: 'Main', component: Main,
         children: [
-            {path: '/gys', name: 'gys', component: gys, meta: {title: '供应商管理'}},
-            {path: '/person-management', name: 'personManagement', component: personManagement, meta: {title: '人员管理'}},
+            {path: '/base-management', name: 'baseM', component: baseM, meta: {title: '基础信息库'}},
+            {path: '/supplier-management', redirect: '/supplier'}, //重定向
+            {path: '/supplier', name: 'supplierP', component: supplierP, meta: {title: '供应商管理'}},
             ]
     },
 
