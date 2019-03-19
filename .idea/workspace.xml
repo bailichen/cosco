@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="908b51fe-4e95-40c8-bded-563093e3291b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/gys/gys.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/gys/main-list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/env.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/gys/gys.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gys/gys.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/person-management/person-management.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/person-management/person-management.vue" afterDir="false" />
-    </list>
+    <list default="true" id="908b51fe-4e95-40c8-bded-563093e3291b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -28,8 +17,8 @@
       <file leaf-file-name="gys.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/gys/gys.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+            <state relative-caret-position="167">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="e#408#459#0" expanded="true" />
               </folding>
@@ -206,7 +195,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="70" />
     <option name="y" value="23" />
     <option name="width" value="1370" />
@@ -388,12 +377,12 @@
       <workItem from="1552752389261" duration="1000" />
       <workItem from="1552752400603" duration="51000" />
       <workItem from="1552788811694" duration="3382000" />
-      <workItem from="1552831705330" duration="5384000" />
+      <workItem from="1552831705330" duration="5663000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26471000" />
+    <option name="totallyTimeSpent" value="26750000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -406,16 +395,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="23" width="1370" height="877" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.9115385" visible="true" weight="0.25277984" />
+      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.58076924" visible="true" weight="0.25277984" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32948717" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32948717" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.10641026" />
-      <window_info id="npm" order="0" sideWeight="0.08846154" side_tool="true" visible="true" weight="0.25277984" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.0948718" />
+      <window_info id="npm" order="0" sideWeight="0.41923076" side_tool="true" visible="true" weight="0.25277984" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.4871795" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Favorites" order="1" side_tool="true" />
@@ -826,8 +814,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/gys/gys.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+        <state relative-caret-position="167">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="e#408#459#0" expanded="true" />
           </folding>
