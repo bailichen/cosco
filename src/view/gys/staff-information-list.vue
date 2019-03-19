@@ -94,15 +94,15 @@
                        :editorStatus="editorStatus"
                        :editorData="editorData"></editor-dialog>
         <delete-dialog v-if="isDetele" textCont="确认删除？"
-                       v-model="isDetele"></delete-dialog>
+                       v-model="isDetele" @handleQuery="handleQuery"></delete-dialog>
     </section>
 
 </template>
 <script>
 import EditorDialog from './editor-dialog.vue'
-import DeleteDialog from './delete-dialog.vue'
+import DeleteDialog from '@/components/delete-dialog.vue'
 export default {
-    name: "staff-information-list",
+    name: "reale-state-list",
     components: {
         EditorDialog,
         DeleteDialog,
@@ -174,6 +174,9 @@ export default {
                 // 若是编辑，传id（信息）给子组件
                 this.editorData = val
             }
+        },
+        handleQuery(){
+            console.log('调取确认删除接口') 
         }
     },
     mounted() {
