@@ -90,9 +90,9 @@
                            :total="total">
             </el-pagination>
         </section>
-        <editor-dialog v-if="isEdit" v-model="isEdit"
+        <employee-editor-dialog v-if="isEdit" v-model="isEdit"
                        :editorStatus="editorStatus"
-                       :editorData="editorData"></editor-dialog>
+                       :editorData="editorData"></employee-editor-dialog>
         <delete-dialog v-if="isDetele" textCont="确认删除？"
                        v-model="isDetele" @handleQuery="handleQuery"></delete-dialog>
     </section>
@@ -101,11 +101,13 @@
 <script>
 import EditorDialog from './editor-dialog.vue'
 import DeleteDialog from '@/components/delete-dialog.vue'
+import EmployeeEditorDialog from './employeeP-editor-dialog.vue'
 export default {
     name: "reale-state-list",
     components: {
-        EditorDialog,
+        // EditorDialog,
         DeleteDialog,
+        EmployeeEditorDialog
     },
     data() {
         return {
@@ -176,7 +178,7 @@ export default {
             }
         },
         handleQuery(){
-            console.log('调取确认删除接口') 
+            console.log('调取确认删除接口')
         }
     },
     mounted() {
