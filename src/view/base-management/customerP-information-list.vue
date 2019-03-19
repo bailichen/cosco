@@ -12,7 +12,8 @@
                        class="el-input__icon el-icon-search"></i>
                 </el-input>
                 <img src="@/assets/images/add.png"
-                     class="btn-img" @click="handleEditor('add')"/>
+                     class="btn-img" 
+                     @click="handleEditor('add')" />
                 <img src="@/assets/images/refresh.png"
                      class="btn-img" />
                 <img src="@/assets/images/printer.png"
@@ -35,14 +36,40 @@
                                  label="序号"
                                  width="50">
                 </el-table-column>
-                <el-table-column label="供应商ID"
-                                 prop="id">
+                <el-table-column label="工号"
+                                 prop="id"
+                                 width="150">
                 </el-table-column>
-                <el-table-column label="供应商全称"
+                <el-table-column label="部门"
+                                 prop="dept"
+                                 width="150">
+                </el-table-column>
+                <el-table-column label="姓名"
                                  prop="name"
                                  show-overflow-tooltip>
                 </el-table-column>
-                <el-table-column label="级别" prop="desc" show-overflow-tooltip>
+                <el-table-column label="性别"
+                                 prop="sex">
+                </el-table-column>
+                <el-table-column label="状态"
+                                 prop="status">
+                </el-table-column>
+                <el-table-column label="身份证号"
+                                 prop="code"
+                                 show-overflow-tooltip>
+                </el-table-column>
+                <el-table-column label="出生年月"
+                                 prop="birth">
+                </el-table-column>
+                <el-table-column label="年龄"
+                                 prop="age">
+                </el-table-column>
+                <el-table-column label="工作时间"
+                                 prop="workTime">
+                </el-table-column>
+                <el-table-column label="毕业学校"
+                                 prop="school"
+                                 show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column type="expand"
                                  width="220">
@@ -72,7 +99,7 @@
                             </section>
                             <section class="last-btn">
                                 <div class="edit"><span @click="handleEditor(props.row)">编辑</span></div>
-                                <div class="delete"><span>删除</span></div>
+                                <div class="delete"><span @click="isDetele = true">删除</span></div>
                             </section>
                         </section>
                     </template>
@@ -87,47 +114,75 @@
                            :total="total">
             </el-pagination>
         </section>
+        <editor-dialog v-if="isEdit" v-model="isEdit"
+                       :editorStatus="editorStatus"
+                       :editorData="editorData"></editor-dialog>
+        <delete-dialog v-if="isDetele" textCont="确认删除？"
+                       v-model="isDetele"></delete-dialog>
     </section>
 
 </template>
 <script>
+import EditorDialog from './customerP-editor-dialog.vue'
+import DeleteDialog from './delete-dialog.vue'
     export default {
+        name: "customerP-information-list",
+        components: {
+            EditorDialog,
+            DeleteDialog,
+        },
         data(){
             return{
+                isEdit: false,
+                isDetele: false,
+                editorStatus: null, // 编辑or新增传值
+                editorData: {},
                 currentPage: 0, // 当前页
                 total: 4, // 总页数
                 tableData: [{
                     id: '12987122',
-                    name: '好滋好味鸡蛋仔',
-                    category: '江浙小吃、小吃零食',
-                    desc: '荷兰优质淡奶，奶香浓而不腻',
-                    address: '上海市普陀区真北路',
-                    shop: '王小虎夫妻店',
-                    shopId: '10333'
+                    dept: '好滋好味鸡蛋仔',
+                    name: '江浙小吃、小吃零食',
+                    sex: '男',
+                    status: '正常',
+                    code: '341222222222222222222222222',
+                    birth: '19001033',
+                    age: '30',
+                    workTime: '19001033',
+                    school: '上海'
                 }, {
-                    id: '12987123',
-                    name: '好滋好味鸡蛋仔',
-                    category: '江浙小吃、小吃零食',
-                    desc: '荷兰优质淡奶，奶香浓而不腻',
-                    address: '上海市普陀区真北路',
-                    shop: '王小虎夫妻店',
-                    shopId: '10333'
-                }, {
-                    id: '12987125',
-                    name: '好滋好味鸡蛋仔',
-                    category: '江浙小吃、小吃零食',
-                    desc: '荷兰优质淡奶，奶香浓而不腻',
-                    address: '上海市普陀区真北路',
-                    shop: '王小虎夫妻店',
-                    shopId: '10333'
-                }, {
-                    id: '12987126',
-                    name: '好滋好味鸡蛋仔',
-                    category: '江浙小吃、小吃零食',
-                    desc: '荷兰优质淡奶，奶香浓而不腻',
-                    address: '上海市普陀区真北路',
-                    shop: '王小虎夫妻店',
-                    shopId: '10333'
+                    id: '12987122',
+                    dept: '好滋好味鸡蛋仔',
+                    name: '江浙小吃、小吃零食',
+                    sex: '男',
+                    status: '正常',
+                    code: '341222222222222222222222222',
+                    birth: '19001033',
+                    age: '30',
+                    workTime: '19001033',
+                    school: '上海'
+                },{
+                    id: '12987122',
+                    dept: '好滋好味鸡蛋仔',
+                    name: '江浙小吃、小吃零食',
+                    sex: '男',
+                    status: '正常',
+                    code: '341222222222222222222222222',
+                    birth: '19001033',
+                    age: '30',
+                    workTime: '19001033',
+                    school: '上海'
+                },{
+                    id: '12987122',
+                    dept: '好滋好味鸡蛋仔',
+                    name: '江浙小吃、小吃零食',
+                    sex: '男',
+                    status: '正常',
+                    code: '341222222222222222222222222',
+                    birth: '19001033',
+                    age: '30',
+                    workTime: '19001033',
+                    school: '上海'
                 }],
                 multipleSelection: [], // 选择数组
                 filter: {
@@ -148,10 +203,18 @@
             getDataList(val) {
                 // 接口数据获取
             },
+            handleEditor(val) {
+                this.isEdit = true;
+                val == "add" ? this.editorStatus = "add" : this.editorStatus = "editor"
+                if (this.editorStatus == 'editor') {
+                    // 若是编辑，传id（信息）给子组件
+                    this.editorData = val
+                }
+            }
         }
     }
 </script>
 <style lang="scss">
     /*import '~/gys.scss'*/
-    @import "~@/view/gys/gys.scss"
+    @import "~@/assets/css/table-list.scss"
 </style>

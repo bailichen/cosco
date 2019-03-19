@@ -7,22 +7,21 @@
                         @handleChooseChild="handleChildClick"></cosco-tabs>
         </section>
         <div>
-            <staff-information-list v-if="menusChoose == 0"></staff-information-list>
-            <reale-state-list v-if="menusChoose == 1"></reale-state-list>
+            <employee-information-list v-if="menusChoose == 0"></employee-information-list>
+            <customer-information-list v-if="menusChoose == 2"></customer-information-list>
         </div>
-
     </section>
 </template>
 <script>
 import CoscoTabs from '@/components/cosco-tabs.vue'
-import StaffInformationList from './staff-information-list.vue'
-import RealeStateList from './reale-state-list.vue' // 不动产信息库
+import EmployeeInformationList from './employeeP-information-list.vue'
+import CustomerInformationList from './customerP-information-list.vue'
 
 export default {
     components: {
         CoscoTabs,
-        StaffInformationList, // 员工信息库
-        RealeStateList, // 不动产信息库
+        EmployeeInformationList, // 员工信息库
+        CustomerInformationList //  客户信息库
     },
     data() {
         return {
@@ -31,6 +30,7 @@ export default {
                 {
                     lable: '员工信息库',
                     value: '0',
+                    routerName: '/employee',
                     children: [
                         {
                             lable: '正式员工',
@@ -45,12 +45,17 @@ export default {
                 {
                     lable: '不动产信息库',
                     value: '1',
-                    children: []
+                    children: [
+
+                    ]
                 },
                 {
                     lable: '客户信息库',
                     value: '2',
-                    children: [],
+                    routerName: '/customer',
+                    children: [
+
+                    ],
                 },
                 {
                     lable: '资产信息库',
@@ -69,26 +74,28 @@ export default {
                 {
                     lable: '企业证书信息库',
                     value: '4',
-                    children: [],
+                    children: [
+
+                    ],
                 }
             ]
         }
     },
     methods: {
-
         handleTopClick(item) {
             console.log(item)
-            this.menusChoose = item.value
+            this.menusChoose = item.value;
         },
         handleChildClick(item) {
 
             console.log(item)
         },
+        handleEditor(val){
+            this.isEdit = true;
+        }
     },
     mounted() {
 
     },
 }
 </script>
-
-

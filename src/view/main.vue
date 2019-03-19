@@ -157,7 +157,7 @@
         position: fixed;
         top: 90px;
         left: 0;
-        width: 240px;
+        width: 230px;
         height: 100%;
         background-color: $theme-main-color;
         -webkit-box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
@@ -185,6 +185,6 @@
 
     .menu-nav .main .main-cont {
         height: auto;
-        padding: 90px 0 20px 240px;
+        padding: 90px 0 20px 230px;
     }
 </style>
