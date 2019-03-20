@@ -76,6 +76,7 @@
                             <section class="last-btn">
                                 <div class="edit"><span @click="handleEditor(props.row)">编辑</span></div>
                                 <div class="delete"><span @click="isDetele = true">删除</span></div>
+                                <div class="delete"><span @click="handleDetail">查看详情</span></div>
                             </section>
                         </section>
                     </template>
@@ -90,25 +91,50 @@
                            :total="total">
             </el-pagination>
         </section>
-        <editor-dialog v-if="isEdit" v-model="isEdit"
+        <editor-dialog v-if="isEdit"
+                       v-model="isEdit"
                        :editorStatus="editorStatus"
                        :editorData="editorData"></editor-dialog>
-        <delete-dialog v-if="isDetele" textCont="确认删除？"
-                       v-model="isDetele" @handleQuery="handleQuery"></delete-dialog>
+        <delete-dialog v-if="isDetele"
+                       textCont="合同信息"
+                       v-model="isDetele"></delete-dialog>
+        <detail-dialog v-if="isDetail"
+                       detailText="合同信息"
+                       :detailData="detailData"
+                       :total="detailTotal"
+                       v-model="isDetail">
+            <template #detailBtn>
+                <!-- 按钮写在这里 -->
+                <el-row type="flex"
+                        class="row-bg"
+                        justify="end">
+
+                    <el-button size="small"
+                               type="primary">打印</el-button>
+                    <el-button size="small"
+                               type="primary">导出</el-button>
+
+                </el-row>
+            </template>
+        </detail-dialog>
     </section>
 
 </template>
 <script>
 import EditorDialog from './editor-dialog.vue'
 import DeleteDialog from '@/components/delete-dialog.vue'
+import DetailDialog from './detail-dialog.vue'
+
 export default {
     name: "reale-state-list",
     components: {
         EditorDialog,
         DeleteDialog,
+        DetailDialog
     },
     data() {
         return {
+            isDetail: false,
             isEdit: false,
             isDetele: false,
             editorStatus: null, // 编辑or新增传值
@@ -152,6 +178,24 @@ export default {
             filter: {
                 searchValue: '', //搜索内容
             },
+            detailTotal: 4,
+            detailData: [{
+                date: '2016-05-02',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-04',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1517 弄'
+            }, {
+                date: '2016-05-01',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1519 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }],
         }
     },
     methods: {
@@ -175,8 +219,11 @@ export default {
                 this.editorData = val
             }
         },
-        handleQuery(){
-            console.log('调取确认删除接口') 
+        handleQuery() {
+            console.log('调取确认删除接口')
+        },
+        handleDetail() {
+            this.isDetail = true;
         }
     },
     mounted() {
@@ -185,6 +232,5 @@ export default {
 }
 </script>
 <style lang="scss">
-/*import '~/gys.scss'*/
 @import "~@/view/gys/gys.scss";
 </style>
