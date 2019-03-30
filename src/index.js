@@ -7,6 +7,7 @@ import './assets/css/tag-style-fix.scss';
 import ElementUI from 'element-ui'; // UI组件
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/reset-css.scss'
+import './assets/font/iconfont.css'
 import '@/config'
 Vue.use(ElementUI);
 new Vue({

@@ -7,7 +7,10 @@
         background: none !important;
         border: 0!important;
         .el-menu-item{
-            text-align: center!important;
+            // text-align: center!important;
+            i{
+                color: #fff;
+            }
         }
     }
 }

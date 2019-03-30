@@ -2,6 +2,7 @@
     <aside class="lef-nav cosoco-nav">
         <el-menu :default-active="$route.path" router class="el-menu-vertical-demo" unique-opened text-color="#fff" active-text-color="#fff">
             <el-menu-item index="/base-management" class="menu-index">
+            <i class="iconfont iconhoutaiyongwuye-xianxing"></i>
                 <span slot="title">基础信息库</span>
             </el-menu-item>
             <el-menu-item index="/supplier-management" class="menu-index">
@@ -9,6 +10,9 @@
             </el-menu-item>
             <el-menu-item index="/gys" class="menu-index">
                 <span slot="title">demo</span>
+            </el-menu-item>
+            <el-menu-item index="/new-demo" class="menu-index">
+                <span slot="title">new-demo</span>
             </el-menu-item>
         </el-menu>
 
